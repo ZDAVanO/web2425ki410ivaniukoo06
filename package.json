@@ -1,0 +1,17 @@
+{
+  "name": "web2425ki410ivaniukoo07",
+  "version": "1.0.0",
+  "description": "A simple website business card containing personal data or project information. Uses POST and GET methods for page navigation and form submission. Implements AJAX to dynamically load page content based on user input.",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

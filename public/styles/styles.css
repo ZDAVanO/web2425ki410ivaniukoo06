@@ -78,3 +78,8 @@ textarea {
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
 }
+
+
+.big-text {
+  font-size: 24px;
+}

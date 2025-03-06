@@ -1,3 +1,6 @@
+
+document.getElementById('load-time').innerText = new Date().toLocaleString();
+
 document.getElementById('ajax-get-btn').addEventListener('click', () => {
   fetch('/ajax-get')
     .then(response => response.json())
@@ -21,4 +24,4 @@ document.getElementById('ajax-post-form').addEventListener('submit', (e) => {
   });
 });
 
-document.getElementById('load-time').innerText = new Date().toLocaleString();
+

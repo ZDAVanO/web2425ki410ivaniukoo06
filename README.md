@@ -6,24 +6,33 @@ A simple website business card containing personal data or project information. 
 
 ## Live Demo
 You can visit the deployed site at:
-[Live Demo](https://web2425ki410ivaniukoo07.vercel.app/)
+[Live Demo](http://web2425ki410ivaniukoo06.kesug.com/)
 
 
 ## Deployment Instructions
-To deploy this project on [Vercel](https://vercel.com), follow these steps:
+To deploy this project on [InfinityFree](https://www.infinityfree.com/), follow these steps:
 
-1. Install Vercel CLI if not already installed:
-    ```sh
-    npm install -g vercel
-    ```
-2. Log in to Vercel:
-    ```sh
-    vercel login
-    ```
-3. Deploy the project:
-    ```sh
-    vercel
-    ```
+
+1. **Create an Account**
+    - Go to [InfinityFree](https://infinityfree.net) and sign up for a free account.
+    - Verify your email and log in to the dashboard.
+
+2. **Set Up a Hosting Account**
+    - Click "Create Account" and choose a free subdomain or use your own domain.
+    - Wait for the account to be activated.
+
+3. **Upload Project Files**
+    - Open the File Manager in the InfinityFree dashboard, or use an FTP client like FileZilla.
+    - If using FileZilla:
+        - Host: `ftpupload.net`
+        - Username & Password: Found in your InfinityFree account settings
+        - Port: `21`
+    - Upload your project files to the `htdocs` folder.
+
+4. **Configure Database (If Needed)**
+    - In the InfinityFree dashboard, go to "MySQL Databases" and create a database.
+    - Update your project’s database configuration with the provided database credentials.
+
 
 ## Task Details
 | **Student Number** | fraud | Authentication 3-ty | Register 3-ty |
@@ -31,7 +40,6 @@ To deploy this project on [Vercel](https://vercel.com), follow these steps:
 | 6                  | DDOS  | facebook            | WhatsApp      |
 
 # Technology Stack
-- Docker
 - PHP
 - JS
 - HTML/CSS

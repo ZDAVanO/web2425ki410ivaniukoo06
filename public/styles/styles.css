@@ -10,6 +10,10 @@ h1 {
   text-align: center;
 }
 
+.big-text {
+  font-size: 24px;
+}
+
 .profile {
   height: 200px;
   width: 200px;
@@ -69,17 +73,8 @@ textarea {
   background: #3586ff;
 }
 
-/* theme switcher styles */
-.bi {
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-  display: block !important;
+.alert.alert-success {
+  margin-bottom: 0;
 }
 
 
-.big-text {
-  font-size: 24px;
-}

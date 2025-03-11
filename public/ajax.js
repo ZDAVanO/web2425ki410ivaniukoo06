@@ -1,5 +1,4 @@
 
-document.getElementById('load-time').innerText = new Date().toLocaleString();
 
 document.getElementById('ajax-get-btn').addEventListener('click', () => {
   fetch('/ajax-get')

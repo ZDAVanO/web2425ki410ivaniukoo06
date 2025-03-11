@@ -1,17 +1,22 @@
 <%- include("partials/header.ejs") %>
 
+<main class="container">
+
   <h1>Home Page</h1>
 
   <p>Page loaded at: <span id="load-time"></span></p>
+  <script>
+    document.getElementById('load-time').innerText = new Date().toLocaleString();
+  </script>
 
-  <div class="container mt-5 pt-3 pb-3 col-12 col-md-8 col-lg-6 border rounded ">
+  <div class="container mt-5 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
     <h2>AJAX GET Request</h2>
     <button id="ajax-get-btn" class="btn btn-primary">Send GET Request</button>
     <p id="ajax-get-response"></p>
     <p id="ajax-get-timestamp"></p>
   </div>
 
-  <div class="container mt-5 pt-3 pb-3 col-12 col-md-8 col-lg-6 border rounded ">
+  <div class="container mt-5 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
     <h2>AJAX POST Request</h2>
     <form id="ajax-post-form" class="">
       <div class="mb-3">
@@ -30,5 +35,7 @@
   </div>
 
   <script src="/ajax.js"></script>
+  
+</main>
 
 <%- include("partials/footer.ejs") %>

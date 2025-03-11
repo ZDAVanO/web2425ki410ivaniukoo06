@@ -10,7 +10,7 @@ You can visit the deployed site at:
 
 
 ## Deployment Instructions
-To deploy this project on Vercel, follow these steps:
+To deploy this project on [Vercel](https://vercel.com), follow these steps:
 
 1. Install Vercel CLI if not already installed:
     ```sh
@@ -25,10 +25,10 @@ To deploy this project on Vercel, follow these steps:
     vercel
     ```
 
+## Task Details
 | **Student Number** | fraud | Authentication 3-ty | Register 3-ty |
 | ------------------ | ----- | ------------------- | ------------- |
 | 6                  | DDOS  | facebook            | WhatsApp      |
-
 
 # Technology Stack
 - Docker

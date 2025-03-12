@@ -14,7 +14,7 @@ To deploy this project on [InfinityFree](https://www.infinityfree.com/), follow 
 
 
 1. **Create an Account**
-    - Go to [InfinityFree](https://infinityfree.net) and sign up for a free account.
+    - Go to [InfinityFree](https://www.infinityfree.com/) and sign up for a free account.
     - Verify your email and log in to the dashboard.
 
 2. **Set Up a Hosting Account**

@@ -21,6 +21,20 @@
             }
         ?>
     </div>
+
+    <div class="container mt-3 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
+        <a href="./index.php?getData2=exampleData" class="btn btn-link mt-2">Submit GET via Link</a>
+
+        <?php
+            if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getData2'])) {
+                $currentTime = date('Y-m-d H:i:s');
+                echo '<div class="alert alert-success mt-2" role="alert">';
+                echo "You submitted (GET): " . htmlspecialchars($_GET['getData2']) . " at " . $currentTime;
+                echo '</div>';
+            }
+        ?>
+    </div>
+    
     
     <div class="container mt-3 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
         <!-- POST Form -->

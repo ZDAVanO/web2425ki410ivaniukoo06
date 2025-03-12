@@ -37,7 +37,7 @@ jobs:
 
       - name: 📦 Create deployment artifact
         run: |
-          zip -r deploy.zip . -x ".*" -x "deploy.zip"
+          zip -r deploy.zip . -x ".*" -x "deploy.zip" -x "config.php"
         
   
       - name: 💾 Upload artifact

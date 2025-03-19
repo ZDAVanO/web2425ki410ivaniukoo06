@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -34,8 +37,13 @@
     </ul>
 
     <div class="col-md-3 text-end">
-      <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
-      <a href="./register.php" class="btn btn-primary">Register</a>
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <span class="me-2">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+        <a href="./logout.php" class="btn btn-outline-danger">Logout</a>
+      <?php else: ?>
+        <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
+        <a href="./register.php" class="btn btn-primary">Register</a>
+      <?php endif; ?>
     </div>
   </header>
 </div>

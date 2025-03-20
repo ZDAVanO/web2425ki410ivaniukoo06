@@ -4,6 +4,24 @@
 
     <h1>Home Page</h1>
 
+
+    <div class="container mt-3 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
+        <h3>Login and Password Received</h3>
+        <?php
+            if (isset($_SESSION['email']) && isset($_SESSION['password_stored'])) {
+                echo '<div class="alert alert-info mt-2 mb-0" role="alert" style="word-wrap: break-word;">';
+                echo "Received Login: " . htmlspecialchars($_SESSION['email']) . "<br>";
+                echo "Received password: " . htmlspecialchars($_SESSION['password_received']) . "<br>";
+                echo "Password stored in DB (" . htmlspecialchars($_SESSION['login_type']) . ") : " . htmlspecialchars($_SESSION['password_stored']) . "<br>";
+                echo '</div>';
+            } else {
+                echo '<div class="alert alert-warning mb-0" role="alert">No login data found in session.</div>';
+            }
+        ?>
+    </div>
+
+    <hr>
+
     <div class="container mt-3 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
         <!-- GET Form -->
         <h3>GET Request Form</h3>

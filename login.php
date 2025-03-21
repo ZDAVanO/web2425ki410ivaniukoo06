@@ -32,18 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($login_type === 'open' && $password === $open_password) {
             login_success($id, $name, $email, $password, $open_password, $login_type);
-        } elseif ($login_type === 'hash' && password_verify($password, $password_hash)) {
+        } elseif ($login_type === 'hash' && $password === $password_hash) {
             login_success($id, $name, $email, $password, $password_hash, $login_type);
-        } elseif ($login_type === 'encrypted') {
-            $encryption_key = 'your_secret_key'; // Replace with the same key used during encryption
-            $decrypted_password = openssl_decrypt($password_encrypted, 'AES-128-CTR', $encryption_key, 0, '1234567891011121');
-            if ($password === $decrypted_password) {
-                login_success($id, $name, $email, $password, $password_encrypted, $login_type);
-            } else {
-                $error_message = "Invalid encrypted password. Please try again.";
-            }
+        } elseif ($login_type === 'encrypted' && $password === $password_encrypted) {
+            login_success($id, $name, $email, $password, $password_encrypted, $login_type);
         } else {
-            $error_message = "Invalid credentials. Please try again.";
+            $error_message = "Invalid credentials. Please try again." . " password: " . $password . ", password_hash: " . $password_hash . ", password_encrypted: " . $password_encrypted . ", open_password: " . $open_password;
         }
     } else {
         $error_message = "No account found with that email address.";
@@ -79,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <!-- Hashed Password Form -->
           <div class="col-md-4 mt-5">
-              <form method="post" action="">
+              <form method="post" action="" onsubmit="hashPassword(event, 'floatingPasswordHash')">
                   <h1 class="h5 mb-3 fw-normal">Login (Hashed Password)</h1>
                   <div class="form-floating mb-3">
                       <input type="email" class="form-control" id="floatingInputHash" placeholder="name@example.com" name="email" required>
@@ -96,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <!-- Encrypted Password Form -->
           <div class="col-md-4 mt-5">
-              <form method="post" action="">
+              <form method="post" action="" onsubmit="encryptPassword(event, 'floatingPasswordEncrypt')">
                   <h1 class="h5 mb-3 fw-normal">Login (Encrypted Password)</h1>
                   <div class="form-floating mb-3">
                       <input type="email" class="form-control" id="floatingInputEncrypt" placeholder="name@example.com" name="email" required>

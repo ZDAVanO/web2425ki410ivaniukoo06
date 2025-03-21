@@ -27,3 +27,52 @@ document.getElementById('getAjaxSubmit').addEventListener('click', function() {
 });
 
 
+function hashPassword(event, passwordFieldId) {
+    event.preventDefault();
+    const passwordField = document.getElementById(passwordFieldId);
+    const hashedPassword = sha256(passwordField.value); // Use a SHA-256 hashing library
+    passwordField.value = hashedPassword;
+    event.target.submit();
+}
+
+function encryptPassword(event, passwordFieldId) {
+    event.preventDefault();
+    const passwordField = document.getElementById(passwordFieldId);
+    encryptionKey = 'your_secret_key';
+    const iv = '1234567891011121'; // Initialization vector (16 bytes)
+    const encryptedPassword = CryptoJS.AES.encrypt(passwordField.value, CryptoJS.enc.Utf8.parse(encryptionKey), {
+        iv: CryptoJS.enc.Utf8.parse(iv),
+        mode: CryptoJS.mode.CTR,
+        padding: CryptoJS.pad.NoPadding
+    }).toString();
+    passwordField.value = encryptedPassword;
+    event.target.submit();
+}
+
+
+function submit_reg_form(event, passwordFieldId, hashedFieldId, encryptedFieldId) {
+    event.preventDefault();
+    const passwordField = document.getElementById(passwordFieldId);
+    const hashedField = document.getElementById(hashedFieldId);
+    const encryptedField = document.getElementById(encryptedFieldId);
+
+    hashedField.value = sha256(passwordField.value); // Use a SHA-256 hashing library
+
+    encryptionKey = 'your_secret_key';
+    const iv = '1234567891011121'; // Initialization vector (16 bytes)
+    const encryptedPassword = CryptoJS
+        .AES
+        .encrypt(passwordField.value, CryptoJS.enc.Utf8.parse(encryptionKey), {
+            iv: CryptoJS.enc.Utf8.parse(iv),
+            mode: CryptoJS.mode.CTR,
+            padding: CryptoJS.pad.NoPadding
+        })
+        .toString();
+    encryptedField.value = encryptedPassword;
+
+    event.target.submit();
+}
+
+
+
+

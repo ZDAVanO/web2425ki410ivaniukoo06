@@ -7,13 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $login_type = $_POST['login_type'];
 
-    $stmt = $conn->prepare("SELECT id, name, password_hash, password_encrypted, open_password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, name, password_hash, open_password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $name, $password_hash, $password_encrypted, $open_password);
+        $stmt->bind_result($id, $name, $password_hash, $open_password);
         $stmt->fetch();
 
         function login_success($id, $name, $email, $password_received, $password_stored, $login_type)
@@ -34,10 +34,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             login_success($id, $name, $email, $password, $open_password, $login_type);
         } elseif ($login_type === 'hash' && $password === $password_hash) {
             login_success($id, $name, $email, $password, $password_hash, $login_type);
-        } elseif ($login_type === 'encrypted' && $password === $password_encrypted) {
-            login_success($id, $name, $email, $password, $password_encrypted, $login_type);
+
+            // // Хешуємо відкритий пароль з бази даних для порівняння
+            // $hashed_open_password = hash('sha256', $open_password);
+            // // Порівнюємо хеш з клієнта з хешем відкритого пароля
+            // if ($password === $hashed_open_password) {
+            //     login_success($id, $name, $email, $password, $open_password, "open");
+            // } else {
+            //     $error_message = "Invalid credentials. Please try again.";
+            // }
+        } elseif ($login_type === 'encrypted') {
+
+            $encryption_key = "12345678901234567890123456789012"; 
+            $iv = "1234567891011121";
+
+            $decrypted_password = openssl_decrypt(
+                base64_decode($password), // Ensure the input is base64-decoded
+                'AES-256-CBC',
+                $encryption_key,
+                OPENSSL_RAW_DATA,
+                $iv
+            );
+            if ($decrypted_password === $open_password) {
+                login_success($id, $name, $email, $password, $open_password, "open");
+            } else {
+                $error_message = "Invalid credentials. Please try again." . " password: " . $password . ", password_hash: " . $password_hash . ", open_password: " . $open_password . ", decrypted_password: " . $decrypted_password;
+            }
         } else {
-            $error_message = "Invalid credentials. Please try again." . " password: " . $password . ", password_hash: " . $password_hash . ", password_encrypted: " . $password_encrypted . ", open_password: " . $open_password;
+            $error_message = "Invalid credentials. Please try again." . " password: " . $password . ", password_hash: " . $password_hash . ", open_password: " . $open_password;
         }
     } else {
         $error_message = "No account found with that email address.";

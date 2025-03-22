@@ -38,13 +38,14 @@ function hashPassword(event, passwordFieldId) {
 function encryptPassword(event, passwordFieldId) {
     event.preventDefault();
     const passwordField = document.getElementById(passwordFieldId);
-    encryptionKey = 'your_secret_key';
-    const iv = '1234567891011121'; // Initialization vector (16 bytes)
-    const encryptedPassword = CryptoJS.AES.encrypt(passwordField.value, CryptoJS.enc.Utf8.parse(encryptionKey), {
-        iv: CryptoJS.enc.Utf8.parse(iv),
-        mode: CryptoJS.mode.CTR,
-        padding: CryptoJS.pad.NoPadding
+    const encryptionKey = CryptoJS.enc.Utf8.parse('12345678901234567890123456789012'); // 16 символів
+    const iv = CryptoJS.enc.Utf8.parse('1234567891011121'); // 16 символів
+
+    const encryptedPassword = CryptoJS.AES.encrypt(passwordField.value, encryptionKey, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC
     }).toString();
+
     passwordField.value = encryptedPassword;
     event.target.submit();
 }

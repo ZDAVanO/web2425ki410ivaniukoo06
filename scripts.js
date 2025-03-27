@@ -59,7 +59,7 @@ function submit_reg_form(event, passwordFieldId, hashedFieldId, encryptedFieldId
 
     hashedField.value = sha256(passwordField.value); // Use a SHA-256 hashing library
 
-    encryptionKey = 'your_secret_key';
+    encryptionKey = '12345678901234567890123456789012';
     const iv = '1234567891011121'; // Initialization vector (16 bytes)
     const encryptedPassword = CryptoJS
         .AES

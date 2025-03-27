@@ -134,6 +134,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="alert alert-danger mt-3"><?php echo htmlspecialchars($error_message); ?></div>
       <?php endif; ?>
 
+
+      <div class="fb-login-button" 
+        data-width="400" 
+        data-size="" 
+        data-button-type="" 
+        data-layout="" 
+        data-auto-logout-link="false" 
+        data-use-continue-as="false">
+
+    </div>
+
+
+
+
+
   </div>
 
 </main>

@@ -15,13 +15,31 @@ session_start();
 
   <!-- <link rel="stylesheet" href="./public/styles/style.css"> -->
 
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2370564043324590', // Замініть на ваш App ID
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v22.0' // Використовуйте актуальну версію API
+    });
+    FB.AppEvents.logPageView();   
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 </head>
 <body class="d-flex flex-column h-100">
 
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v22.0&appId=2370564043324590"></script>
+<!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v22.0&appId=2370564043324590"></script> -->
 
 
 

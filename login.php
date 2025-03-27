@@ -136,14 +136,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
       <div class="fb-login-button" 
-        data-width="400" 
-        data-size="" 
-        data-button-type="" 
-        data-layout="" 
-        data-auto-logout-link="false" 
-        data-use-continue-as="false">
-
-    </div>
+            data-width="" 
+            data-size="large" 
+            data-button-type="continue_with" 
+            data-layout="default" 
+            data-auto-logout-link="false" 
+            data-use-continue-as="false" 
+            onlogin="checkLoginState();">
+        </div>
 
 
 

@@ -76,4 +76,29 @@ function submit_reg_form(event, passwordFieldId, hashedFieldId, encryptedFieldId
 
 
 
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        FB.api('/me', {fields: 'id,name,email'}, function(user) {
+          // Надішліть дані на сервер для обробки
+          fetch('./fb-login-handler.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+          }).then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                window.location.href = './index.php';
+              } else {
+                alert('Login failed!');
+              }
+            });
+        });
+      } else {
+        alert('User not authenticated.');
+      }
+    });
+  }
 

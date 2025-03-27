@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <?php endif; ?>
 
 
-      <div class="fb-login-button" 
+      <div class="fb-login-button mt-5" 
             data-width="" 
             data-size="large" 
             data-button-type="continue_with" 
@@ -146,7 +146,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
 
-
+        
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 
 
   </div>

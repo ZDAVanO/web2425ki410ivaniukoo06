@@ -78,8 +78,12 @@ function submit_reg_form(event, passwordFieldId, hashedFieldId, encryptedFieldId
 
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
+        console.log(response);
       if (response.status === 'connected') {
         FB.api('/me', {fields: 'id,name,email'}, function(user) {
+
+            console.log(user);
+
           // Надішліть дані на сервер для обробки
           fetch('./fb-login-handler.php', {
             method: 'POST',
@@ -89,7 +93,9 @@ function checkLoginState() {
             body: JSON.stringify(user)
           }).then(response => response.json())
             .then(data => {
+                console.log(data);
               if (data.success) {
+                alert('Login successful!');
                 window.location.href = './index.php';
               } else {
                 alert('Login failed!');
@@ -100,5 +106,13 @@ function checkLoginState() {
         alert('User not authenticated.');
       }
     });
-  }
+}
 
+
+//   function checkLoginState() {
+//     FB.getLoginStatus(function(response) {
+//       statusChangeCallback(response);
+//     });
+//   }
+
+  

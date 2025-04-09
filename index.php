@@ -4,6 +4,24 @@
 
     <h1>Home Page</h1>
 
+
+    <div class="container mt-3 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
+        <h3>Login and Password Received</h3>
+        <?php
+            if (isset($_SESSION['email']) && isset($_SESSION['password_stored'])) {
+                echo '<div class="alert alert-info mt-2 mb-0" role="alert" style="word-wrap: break-word;">';
+                echo "Received Login: " . htmlspecialchars($_SESSION['email']) . "<br>";
+                echo "Received password: " . htmlspecialchars($_SESSION['password_received']) . "<br>";
+                echo "Password stored in DB (" . htmlspecialchars($_SESSION['login_type']) . ") : " . htmlspecialchars($_SESSION['password_stored']) . "<br>";
+                echo '</div>';
+            } else {
+                echo '<div class="alert alert-warning mb-0" role="alert">No login data found in session.</div>';
+            }
+        ?>
+    </div>
+
+    <hr>
+
     <div class="container mt-3 pt-3 pb-3 col-10 col-md-8 col-lg-6 col-xl-5 border rounded ">
         <!-- GET Form -->
         <h3>GET Request Form</h3>
@@ -78,35 +96,6 @@
         </form>
         <div id="getAjaxResponse"></div>
     </div>
-
-    <script>
-        // POST AJAX
-        document.getElementById('postAjaxSubmit').addEventListener('click', function() {
-            var postData = document.getElementById('ajaxPostData').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', './ajax.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    document.getElementById('postAjaxResponse').innerHTML = '<div class="alert alert-success mt-2" role="alert">' + xhr.responseText + '</div>';
-                }
-            };
-            xhr.send('ajaxPostData=' + encodeURIComponent(postData));
-        });
-
-        // GET AJAX
-        document.getElementById('getAjaxSubmit').addEventListener('click', function() {
-            var getData = document.getElementById('ajaxGetData').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', './ajax.php?ajaxGetData=' + encodeURIComponent(getData), true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    document.getElementById('getAjaxResponse').innerHTML = '<div class="alert alert-success mt-2" role="alert">' + xhr.responseText + '</div>';
-                }
-            };
-            xhr.send();
-        });
-    </script>
 
 </main>
 

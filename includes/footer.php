@@ -25,6 +25,8 @@
     document.getElementById('load-time').innerText = new Date().toLocaleString();
 </script>
 
+<script src="loadTest.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 

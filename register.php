@@ -19,6 +19,10 @@
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3">
+          <input type="tel" class="form-control" id="floatingPhone" placeholder="Phone Number" name="phone" required>
+          <label for="floatingPhone">Phone Number</label>
+        </div>
+        <div class="form-floating mb-3">
           <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
           <label for="floatingPassword">Password</label>
         </div>
